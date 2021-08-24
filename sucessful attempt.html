@@ -1,0 +1,143 @@
+<html>
+<head>
+    <link rel="shortcut icon" type="image/png" href="./jasmine/jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="./jasmine/jasmine.css">
+
+    <script type="text/javascript" src="./jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="./jasmine/jasmine-html.js"></script>
+    <script type="text/javascript" src="./jasmine/boot.js"></script>
+
+    <script>
+//----------------------------------------------
+
+type_word_here_to_code = ('Type your word here')    //accepts both lowercase/uppercase and spaces. 
+coded_active = true                                 //does not accept special characters.
+type_word_here_to_decode = ('Wbsh brxu zrug khuh')
+decoded_active = true
+
+//----------------------------------------------
+let alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','N','M','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+let targetword = Array.from(type_word_here_to_code.toUpperCase())
+let targetword2 = Array.from(type_word_here_to_decode.toUpperCase())
+let codedword = []
+let decodedword = []
+const limit = targetword.length
+const limit2 = targetword2.length
+let limit3 = limit + limit2
+let i = -1; i < limit; i++
+let i2 = -1; i2 < limit2; i2++
+k = targetword.toString()
+k2 = targetword2.toString()
+const ite = targetword[Symbol.iterator]();
+const ite2 = targetword2[Symbol.iterator]();
+
+    for (let i3 = 0; i3 < limit3; i3++) {
+        if (i3 < limit) {
+    k = ite.next().value
+    loopletter()
+    newLength = codedword.push(k)
+    }
+    if (i3 < limit2) {
+    k2 = ite2.next().value
+    loopletter()
+    newLength2 = decodedword.push(k2)
+    }
+    }
+if (coded_active == true) {
+    console.log(codedword.join(''))
+} else {}
+if (decoded_active == true) {
+    console.log(decodedword.join(''))
+} else {}
+
+
+function loopletter() {
+        if (k.charCodeAt(0) > 87) {
+        k = String.fromCharCode(k.charCodeAt(0) - 23)
+        } else if (k.charCodeAt(0) == 32) {}
+        else {
+            k = String.fromCharCode(k.charCodeAt(0) + 3)
+    }
+        if (k2.charCodeAt(0) == 32) {
+        } else if (k2.charCodeAt(0) < 68) {
+        k2 = String.fromCharCode(k2.charCodeAt(0) + 23)
+        }
+        else {
+            k2 = String.fromCharCode(k2.charCodeAt(0) - 3)
+    }
+    
+    
+   
+}
+
+// Jasmine below
+
+        function loopCheck(k) {
+            return k
+        }
+        describe('UTF-16 character range', () => {
+            it('Make sure all letters filtered are within the correct UTF-16 code range. (A-Z), only uppercase', () => {
+                //---arrange
+                //code
+                let code_letter = k
+                let code_letter_limit = i
+                //decode
+                let decode_letter = k2
+                let decode_letter_limit = i2
+
+                let letter_A = 90
+                let letter_Z = 65
+
+                //---act
+
+                //---assert
+                expect(code_letter.charCodeAt(code_letter_limit)).toBeLessThanOrEqual(letter_A)
+                expect(code_letter.charCodeAt(code_letter_limit)).toBeGreaterThanOrEqual(letter_Z)
+                expect(decode_letter.charCodeAt(decode_letter_limit)).toBeLessThanOrEqual(letter_A )
+                expect(decode_letter.charCodeAt(decode_letter_limit)).toBeGreaterThanOrEqual(letter_Z)
+            })
+        });
+
+        describe('Input word differs to output', () => {
+            it('The input word (type_word_here_to_code/type_word_here_to_decode) need to have a different value to the processed output word. If not, then the word is not coded in the execution', () => {
+                //---arrange
+                let input_for_coded = targetword.toString()
+                let input_for_decoded = targetword2.toString()
+                let output_for_coded = codedword.toString()
+                let output_for_decoded = decodedword.toString()
+                //---act
+                if (input_for_coded == output_for_coded) {
+                    fail("The target word is not being 'coded'. Instead it's returning the inital input.")
+                }
+                if (input_for_decoded == output_for_decoded) {
+                    fail("The target word is not being 'de-coded'. Instead it's returning the inital input.")
+                }
+                //---assert
+                expect(input_for_coded).not.toEqual(output_for_coded)
+                expect(input_for_decoded).not.toEqual(output_for_decoded)
+
+            })
+        });
+
+        describe('Correct length values defined', () => {
+            it('Checking if all defined length values are equal to the true value', () => {
+                //---arrange
+                let coded_output_word = codedword.join('')
+                let decoded_output_word = decodedword.join('')
+                //---act
+                if (targetword.length !=  coded_output_word.length) {
+                    fail("The output 'decoded' word has an inequal length value to the input word.")
+                }
+                if (targetword2.length !=  decoded_output_word.length) {
+                    fail("The output 'coded' word has an inequal length value to the input word.")
+                }
+                //---assert
+                expect(targetword.length).toEqual(coded_output_word.length)
+                expect(targetword2.length).toEqual(decoded_output_word.length)
+
+            })
+        });
+    </script>
+</head>
+
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head>
+    <link rel="shortcut icon" type="image/png" href="./jasmine/jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="./jasmine/jasmine.css">
+
+    <script type="text/javascript" src="./jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="./jasmine/jasmine-html.js"></script>
+    <script type="text/javascript" src="./jasmine/boot.js"></script>
+
+    <script>
+const alphabet = ['A','B','C','E','F','G','H','I','J','K','L','N','M','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+// The alphabet array which is used for referrence when shifting targetword
+let letternum = 3
+const first = alphabet[[letternum]-3]
+let targetword = Array.from('HELLO')
+// Displays each letter in 'HELLO' as an item in a new array.
+const limit = targetword.length
+for (let i = 0; i < limit; i++) {
+function findletter(alphabet) {
+    // Creates a loop which ends depending on the length of the targetword.
+    return alphabet == targetword[0+i];
+    }
+    console.log(alphabet.find(findletter))
+}
+    </script>
+</head>
+
+</html>

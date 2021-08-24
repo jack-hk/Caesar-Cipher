@@ -1,0 +1,31 @@
+<html>
+<head>
+    <link rel="shortcut icon" type="image/png" href="./jasmine/jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="./jasmine/jasmine.css">
+
+    <script type="text/javascript" src="./jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="./jasmine/jasmine-html.js"></script>
+    <script type="text/javascript" src="./jasmine/boot.js"></script>
+
+    <script>
+let alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','N','M','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+
+let targetword = Array.from('TASK')
+const limit = targetword.length
+/*alphabet.forEach(function(item, index){
+    index - 3
+
+})*/
+targetword.toString()
+const idk = targetword[Symbol.iterator]();
+
+let finalword = []
+for (let i = 0; i < limit; i++) {
+    k = idk.next().value
+    newLength = finalword.unshift(k)
+}
+console.log(finalword.join(''))
+    </script>
+</head>
+
+</html>
